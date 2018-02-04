@@ -1,0 +1,28 @@
+{% extends './layout.html'%}
+
+{% block content %}
+    
+        <div>
+            <form method="POST" action="/users">
+                <input name="name" label="name"/>
+                <button>Submit</button>
+            </form>
+
+        </div>
+    <div class="card">
+        <ul class="list-group list-group-flush">
+            {% for user in users %}
+            <li class="list-group-item">
+                
+                <a href="/users/{{user.id}}">{{user.name}}</a>
+                
+                <form method="POST" action='/users/{{user.id}}?_method=DELETE'>
+                    <button  class="btn btn-danger">DELETE</button>
+                </form>
+                
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock%}
